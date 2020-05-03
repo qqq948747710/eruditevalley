@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.VideoActivity">
+    <include layout="@layout/main_navbar"/>
+    <cn.jzvd.JzvdStd
+        android:id="@+id/activity_video_player"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+    <TextView
+        android:id="@+id/activity_video_text"
+        android:paddingTop="17dp"
+        android:paddingHorizontal="17dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="17sp"
+        android:textColor="@android:color/black"
+        android:text="这就是简介"/>
+</LinearLayout>

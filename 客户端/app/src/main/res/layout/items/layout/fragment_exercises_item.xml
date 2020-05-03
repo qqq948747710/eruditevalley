@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:background="#808080"
+        android:layout_height="1px"/>
+    <Button
+        android:id="@+id/item_exercises_id"
+        android:layout_marginLeft="50dp"
+        android:layout_centerVertical="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/exercises_bg_1"
+        android:textColor="@android:color/black"
+        android:text="1"/>
+    <TextView
+        android:layout_toRightOf="@+id/item_exercises_id"
+        android:layout_alignTop="@+id/item_exercises_id"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/item_exercises_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:text="第一章 安卓基础入门"/>
+    <TextView
+        android:layout_toRightOf="@+id/item_exercises_id"
+        android:layout_alignBottom="@+id/item_exercises_id"
+        android:id="@+id/item_exercises_sum"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:textColor="@android:color/black"
+        android:text="共计5章"/>
+</RelativeLayout>
