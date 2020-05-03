@@ -1,9 +1,0 @@
-{"code":0,
-  "result": [
-    {"title":"第一章 安卓基础入门","imagename":"chapter_1_icon.png","videoname":"1.mp4"},
-    {"title":"第二章 安卓UI入门","imagename":"chapter_2_icon.png","videoname":"2.mp4"},
-    {"title":"第三章 安卓基础入门","imagename":"chapter_3_icon.png","videoname":"3.mp4"},
-    {"title":"第四章 安卓进阶教程","imagename":"chapter_4_icon.png","videoname":"4.mp4"},
-    {"title":"第五章 安卓进阶教程","imagename":"chapter_5_icon.png","videoname":"5.mp4"},
-    {"title":"第六章 安卓高级教程","imagename":"chapter_6_icon.png","videoname":"6.mp4"}
-  ]}
