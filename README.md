@@ -26,14 +26,19 @@ by:小污  qqq948747710
 
 index页面
 ![index](https://raw.githubusercontent.com/qqq948747710/eruditevalley/master/%E5%AE%A2%E6%88%B7%E7%AB%AF/iamge/index.JPG)
+
 video页面
 ![video](https://raw.githubusercontent.com/qqq948747710/eruditevalley/master/%E5%AE%A2%E6%88%B7%E7%AB%AF/iamge/video.JPG)
+
 习题页面
 ![xiti](https://raw.githubusercontent.com/qqq948747710/eruditevalley/master/%E5%AE%A2%E6%88%B7%E7%AB%AF/iamge/xiti.JPG)
+
 选择界面
 ![option](https://raw.githubusercontent.com/qqq948747710/eruditevalley/master/%E5%AE%A2%E6%88%B7%E7%AB%AF/iamge/xitili.JPG)
+
 我的资料界面
 ![my](https://raw.githubusercontent.com/qqq948747710/eruditevalley/master/%E5%AE%A2%E6%88%B7%E7%AB%AF/iamge/my.JPG)
+
 登录界面
 ![login](https://raw.githubusercontent.com/qqq948747710/eruditevalley/master/%E5%AE%A2%E6%88%B7%E7%AB%AF/iamge/login.JPG)
 
@@ -88,4 +93,16 @@ dependencies {
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
 
+##技术要点
+RxJava+Retrofit2的网络请求框架,项目使用了传统的mvc开发模式。
 
+Services文件夹：
+   里面存放着网络请求的服务、请求接口和网络实体类用于把网络请求json字符串转成实体对象，由retrofit2对这些接口通过注释去实现，Service类都是extends Service。Service简单的使用了一个自写队列的操作，可以有效等待多队列请求后刷新视图。
+   
+View文件夹：
+   里面都是一些Activity和一些自写的轮播图组件，Fragment碎片等等。
+Model文件夹：
+   里面是一些数据对象，还有单例的数据管理类。
+   
+##模块关系
+  View--》Controller--》Model---》Services
