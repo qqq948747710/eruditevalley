@@ -20,7 +20,7 @@ by:小污  qqq948747710
 ![houduan](https://raw.githubusercontent.com/qqq948747710/eruditevalley/master/%E5%AE%A2%E6%88%B7%E7%AB%AF/iamge/houdan.JPG)
 
 
-##关于客户端
+## 关于客户端
 
 我的android是3.6.1
 
@@ -44,7 +44,7 @@ video页面
 
 还有一些这里没列出，可以自行体验。
 
-##使用方法:
+## 使用方法:
 
 把app文件放入项目中即可，不过这样可能会出现一些不可预料的错误。可以自行新建项目，引入好库和配置项。然后再把main中的java文件和资源文件等等导入。
 
@@ -82,7 +82,7 @@ dependencies {
    }
 
 ```
-关于AndroidManifest.xml
+## 关于AndroidManifest.xml
 ```Java
  android:screenOrientation="portrait"
  //这一条是给video横屏的权限，不过会报红可以忽略
@@ -97,7 +97,7 @@ dependencies {
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
 
-##技术要点
+## 技术要点
 RxJava+Retrofit2的网络请求框架,项目使用了传统的mvc开发模式。
 
 Services文件夹：
@@ -108,5 +108,5 @@ View文件夹：
 Model文件夹：
    里面是一些数据对象，还有单例的数据管理类。
    
-##模块关系
+## 模块关系
   View--》Controller--》Model---》Services
