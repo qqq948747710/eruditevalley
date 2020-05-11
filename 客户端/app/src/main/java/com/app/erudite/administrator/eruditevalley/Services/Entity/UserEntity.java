@@ -10,6 +10,8 @@ public class UserEntity {
     private int code;
     private String username;
     private String name;
+    private String email;
+    private String sex;
     private String headpath;
 
     public String getUsername() {
@@ -42,5 +44,21 @@ public class UserEntity {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

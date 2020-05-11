@@ -1,11 +1,10 @@
 package com.app.erudite.administrator.eruditevalley.View.Fragment;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -71,9 +70,15 @@ public class ExescisesFragment extends Fragment implements ExercisesAdapter.Exer
     @Override
     public void OnExercisesClick(int position) {
         if(UserInfo.unlogin()){
-            Toast.makeText(getContext(),"请您先登录!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"请先登录",Toast.LENGTH_SHORT).show();
             return;
         }
         ExercisesActivity.loadActivity(getContext(),mMexescisesInfo.getExescls().get(position));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateView(mMexescisesInfo.getExescls());
     }
 }

@@ -86,4 +86,10 @@ public class IndexFragment extends Fragment implements CycleViewPager.ImageCycle
     public void OnClickIndex(int position) {
         VideoActivity.loadActivity(getContext(),mIndexInfo.getIndexlists().get(position));
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateView(mIndexInfo.getCycleinfos(),mIndexInfo.getIndexlists());
+    }
 }

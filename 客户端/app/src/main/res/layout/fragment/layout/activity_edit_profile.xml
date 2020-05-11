@@ -3,14 +3,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal">
+    <include layout="@layout/main_navbar"/>
     <LinearLayout
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/myinfo_login_bg">
+        android:background="@android:color/white"
+        >
         <ImageView
-            android:id="@+id/my_head"
+            android:id="@+id/eduit_head_img"
             android:layout_marginTop="100dp"
             android:layout_width="50pt"
             android:layout_height="50pt"
@@ -18,12 +20,13 @@
             android:layout_gravity="center_horizontal"
             />
         <TextView
-            android:id="@+id/my_loginname"
+            android:id="@+id/eduit_head"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textSize="17sp"
-            android:text="点击登录"/>
+            android:textColor="@android:color/black"
+            android:text="点击头像更换"/>
     </LinearLayout>
     <LinearLayout
         android:paddingTop="10dp"
@@ -36,24 +39,27 @@
             android:layout_height="1px"
             android:background="#808080"/>
         <RelativeLayout
+            android:id="@+id/edit_name_item"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#f5f5f5">
-            <ImageView
-                android:id="@+id/my_history_ico"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/course_history_icon"/>
             <TextView
+                android:id="@+id/edit_name_tv"
                 android:layout_marginLeft="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="播放记录"
+                android:text="昵称"
                 android:textColor="#808080"
+                android:textSize="19sp"/>
+            <TextView
+                android:id="@+id/edit_name"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textSize="19sp"
-                android:layout_toRightOf="@id/my_history_ico"/>
+                android:textColor="@android:color/black"
+                android:text="我是好人"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,25 +72,27 @@
             android:layout_height="1px"
             android:background="#808080"/>
         <RelativeLayout
-            android:id="@+id/my_profile"
+            android:id="@+id/edit_sex_item"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#f5f5f5">
-            <ImageView
-                android:id="@+id/my_profile_ico"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/course_history_icon"/>
             <TextView
+                android:id="@+id/edit_sex_tv"
                 android:layout_marginLeft="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="资料"
+                android:text="性别"
                 android:textColor="#808080"
+                android:textSize="19sp"/>
+            <TextView
+                android:id="@+id/edit_sex"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textSize="19sp"
-                android:layout_toRightOf="@id/my_profile_ico"/>
+                android:textColor="@android:color/black"
+                android:text="男"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,24 +105,27 @@
             android:layout_height="1px"
             android:background="#808080"/>
         <RelativeLayout
+            android:id="@+id/edit_email_item"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#f5f5f5">
-            <ImageView
-                android:id="@+id/my_setting_ico"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/myinfo_setting_icon"/>
             <TextView
+                android:id="@+id/edit_email_tv"
                 android:layout_marginLeft="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="设置"
+                android:text="电子邮箱"
                 android:textColor="#808080"
+                android:textSize="19sp"/>
+            <TextView
+                android:id="@+id/edit_email"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textSize="19sp"
-                android:layout_toRightOf="@id/my_setting_ico"/>
+                android:textColor="@android:color/black"
+                android:text="123@qq.com"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,5 +137,14 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="#808080"/>
+        <Button
+            android:id="@+id/edit_ok"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logbtn_selector"
+            android:textColor="@android:color/black"
+            android:text="保存修改"
+            />
     </LinearLayout>
 </LinearLayout>

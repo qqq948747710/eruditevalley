@@ -116,7 +116,7 @@ public class CycleViewPager extends FrameLayout implements ViewPager.OnPageChang
 
     public void setData(List<Cycleinfo> list, ImageCycleViewListener listener, int showPosition){
         if(list==null||list.size()==0){
-            this.setVisibility(View.GONE);
+            //this.setVisibility(View.GONE);
             return;
         }
         mViews.clear();

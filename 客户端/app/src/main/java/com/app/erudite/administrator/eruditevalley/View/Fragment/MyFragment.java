@@ -6,22 +6,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+
+import com.app.erudite.administrator.eruditevalley.Config.AppConfig;
 import com.app.erudite.administrator.eruditevalley.Model.UserInfo;
 import com.app.erudite.administrator.eruditevalley.R;
+import com.app.erudite.administrator.eruditevalley.View.EditProfileActivity;
 import com.app.erudite.administrator.eruditevalley.View.LoginActivity;
+import com.bumptech.glide.Glide;
 
 public class MyFragment extends Fragment implements View.OnClickListener {
     private ImageView myHistoryIco;
     private ImageView mySettingIco;
     private TextView myLoginname;
+    private ImageView myHead;
+
     private static MyFragment myfragment;
     private UserInfo userInfo;
+    private RelativeLayout myProfile;
     public MyFragment(){
         super();
     }
@@ -40,23 +49,27 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         myHistoryIco = (ImageView) view.findViewById(R.id.my_history_ico);
         mySettingIco = (ImageView) view.findViewById(R.id.my_setting_ico);
         myLoginname = (TextView) view.findViewById(R.id.my_loginname);
+        myHead = (ImageView) view.findViewById(R.id.my_head);
+        myProfile = (RelativeLayout) view.findViewById(R.id.my_profile);
         myLoginname.setOnClickListener(this);
+        myProfile.setOnClickListener(this);
         initModul();
-        this.update(userInfo.getName());
+        this.updateView(userInfo.getName());
         return view;
     }
 
     private void initModul(){
         userInfo=userInfo.get(this);
     }
-    public void update(String loginname){
+    public void updateView(String loginname){
         myLoginname.setText(loginname.isEmpty()?"点击登录":loginname);
+        Glide.with(this).load(AppConfig.Services.baserurl+userInfo.getHeadpath()).into(myHead);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        userInfo.getinfo();
+        userInfo.getinfoandupdateView();
     }
 
     @Override
@@ -67,6 +80,15 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                     Intent intent =new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }
+                break;
+            case R.id.my_profile:
+                if(userInfo.getUsername().isEmpty()){
+                    Toast.makeText(getContext(),"请先登录",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent intent=new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

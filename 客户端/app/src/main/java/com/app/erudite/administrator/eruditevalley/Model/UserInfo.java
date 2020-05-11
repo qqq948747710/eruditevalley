@@ -2,22 +2,30 @@ package com.app.erudite.administrator.eruditevalley.Model;
 
 import android.content.Context;
 
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Toast;
 
 
-
+import com.app.erudite.administrator.eruditevalley.Services.Entity.HeadEntity;
 import com.app.erudite.administrator.eruditevalley.Services.Entity.UserEntity;
 import com.app.erudite.administrator.eruditevalley.Services.UserService;
 import com.app.erudite.administrator.eruditevalley.View.Fragment.MyFragment;
+
+import java.io.File;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 
 public class UserInfo implements Observer<UserEntity> {
-    private String username;
-    private String name;
-    private String headpath;
+    private static String username;
+    private static String name;
+    private static String headpath;
+    private static String email;
+    private static String sex;
     private static UserInfo suserinfo;
     private UserService service;
     private Context mContext;
@@ -30,8 +38,10 @@ public class UserInfo implements Observer<UserEntity> {
         this.name="";
         this.username="";
         this.headpath="";
+        this.sex="0";
+        this.email="";
         service=new UserService(mContext);
-        getinfo();
+        getinfoandupdateView();
     }
 
     public static UserInfo get(MyFragment myfragment){
@@ -40,34 +50,19 @@ public class UserInfo implements Observer<UserEntity> {
         }
         return suserinfo=new UserInfo(myfragment);
     }
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getHeadpath() {
-        return headpath;
-    }
-
-    public void setHeadpath(String headpath) {
-        this.headpath = headpath;
-    }
-
-    public void getinfo(){
+    public void getinfoandupdateView(){
         service.getuserinfo(this);
     }
-
+    public void alterinfoandupdateView(UserEntity userEntity){
+        service.alterprofile(userEntity,this);
+    }
+    public void updatehead(Uri fileuri,Observer<HeadEntity> observer){
+        File file=uri2File(fileuri);
+        service.uploadhaad(file,observer);
+    }
+    public void updatehead(File file,Observer<HeadEntity> observer){
+        service.uploadhaad(file,observer);
+    }
     @Override
     public void onSubscribe(Disposable d) {
 
@@ -82,7 +77,9 @@ public class UserInfo implements Observer<UserEntity> {
         this.setName(userEntity.getName());
         this.setUsername(userEntity.getUsername());
         this.setHeadpath(userEntity.getHeadpath());
-        myFragment.update(this.name);
+        this.setSex(userEntity.getSex());
+        this.setEmail(userEntity.getEmail());
+        this.updataView();
     }
 
     @Override
@@ -99,5 +96,72 @@ public class UserInfo implements Observer<UserEntity> {
             return true;
         }
         return false;
+    }
+
+    private void updataView(){
+        myFragment.updateView(this.name);
+    }
+    /**
+     * user转换为file文件
+     *返回值为file类型
+     * @param uri
+     * @return
+     */
+    private File uri2File(Uri uri) {
+        String img_path;
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor actualimagecursor = myFragment.getActivity().getContentResolver().query(uri, proj, null,
+                null, null);
+        if (actualimagecursor == null) {
+            img_path = uri.getPath();
+        } else {
+            int actual_image_column_index = actualimagecursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            actualimagecursor.moveToFirst();
+            img_path = actualimagecursor
+                    .getString(actual_image_column_index);
+        }
+        File file = new File(img_path);
+        return file;
+    }
+
+    public static String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public static String getHeadpath() {
+        return headpath;
+    }
+
+    public void setHeadpath(String headpath) {
+        this.headpath = headpath;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        UserInfo.email = email;
+    }
+
+    public static String getSex() {
+        return sex;
+    }
+
+    public static void setSex(String sex) {
+        UserInfo.sex = sex;
     }
 }
