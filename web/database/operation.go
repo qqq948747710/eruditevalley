@@ -40,8 +40,13 @@ func(t *DBlogic)Insert(table string,data map[string]string)(sql.Result, error){
 
 func(t *DBlogic)Update(table string,data map[string]string,where string)(sql.Result,error){
 	statement:="update "+table+" set "
+	isfirst:=true;
 	for k,v:=range data{
-		statement+=k+"="+"'"+v+"'"+" "
+		if(isfirst){
+			statement+=k+"="+"'"+v+"'"
+		}
+		statement+=","+k+"="+"'"+v+"'"
+		isfirst=false;
 	}
 	statement+=" "+where
 	result,err:=t.DB.Exec(statement)
